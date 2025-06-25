@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sabor Guayaquil - Tu Guía Gastronómica Colaborativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+    }
+    header {
+      background-color: #ff6f3c;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav {
+      background-color: #ff9a66;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #ff6f3c;
+    }
+    .place {
+      background: #fff3e6;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #map {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .btn-primary {
+      background-color: #ff6f3c;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    footer {
+      text-align: center;
+      background: #ff6f3c;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>Sabor Guayaquil - Tu Guía Gastronómica Colaborativa</header>
+  <nav>
+    <a href="#restaurantes">Restaurantes</a>
+    <a href="#huecas">Huecas</a>
+    <a href="#cafes">Cafés</a>
+    <a href="#contribuir">Contribuir</a>
+  </nav>
+  <main>
+    <section id="intro">
+      <h2>Bienvenido</h2>
+      <p>Descubre los mejores lugares para comer en Guayaquil. Contribuye y comparte tus experiencias.</p>
+    </section>
+    <section id="restaurantes">
+      <h2>Restaurantes</h2>
+      <div class="place"><strong>La Canoa:</strong> Comida típica en el Malecón 2000.</div>
+      <div class="place"><strong>Lo Nuestro:</strong> Platos caseros con sabor local.</div>
+    </section>
+    <section id="huecas">
+      <h2>Huecas</h2>
+      <div class="place"><strong>Hueca de Chela:</strong> Encebollado y ceviche tradicional.</div>
+    </section>
+    <section id="cafes">
+      <h2>Cafés</h2>
+      <div class="place"><strong>Café del Puerto:</strong> Café artesanal frente al río.</div>
+    </section>
+    <section id="mapa">
+      <h2>Mapa de Ubicación</h2>
+      <div id="map"></div>
+    </section>
+    <section id="contribuir">
+      <h2>¿Quieres recomendar un lugar?</h2>
+      <p>Envía tu recomendación usando el siguiente formulario:</p>
+      <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe0RsRFOQbE94RHs6En36Im9VvAr6LjvSPY0NVx4wzIuB38MA/viewform" target="_blank">Enviar recomendación</a>
+    </section>
+  </main>
+  <footer>
+    © 2025 Sabor Guayaquil - Hecho con ❤️ para la comunidad
+  </footer>
+  <script>
+    function initMap() {
+      const guayaquil = { lat: -2.1894, lng: -79.8891 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: guayaquil,
+      });
+      const lugares = [
+        { position: { lat: -2.1955, lng: -79.8856 }, title: "La Canoa" },
+        { position: { lat: -2.1911, lng: -79.8895 }, title: "Lo Nuestro" },
+        { position: { lat: -2.1880, lng: -79.8932 }, title: "Hueca de Chela" },
+        { position: { lat: -2.1900, lng: -79.8850 }, title: "Café del Puerto" },
+      ];
+      lugares.forEach(lugar => {
+        new google.maps.Marker({
+          position: lugar.position,
+          map,
+          title: lugar.title,
+        });
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRD91ZyiyzXyUVCVJ3LDabS8gKqB6kbOk&callback=initMap"></script>
+</body>
+</html>
